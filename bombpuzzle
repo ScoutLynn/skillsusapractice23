@@ -1,0 +1,50 @@
+import tkinter as tk
+
+def press():
+  global x
+  global y
+  x += 1
+  if x / 10 == 1:
+    x = 0
+    y += 1
+  onecount.config(text = x)
+  tencount.config(text = y)
+
+x = 0
+y = 0
+def action_one():
+  if y == 1:
+    iFrame = tk.Frame(window1,bg="#FFFDD0", width = 50, height = 50)
+    iFrame.grid(row = 1, column = 0, padx=5, pady=5)
+    
+
+window1 = tk.Tk()
+window1.title("Defuse")
+window1.config(bg="#FFE0D7")
+window1.geometry("400x400")
+
+
+
+# button frame 
+cFrame = tk.Frame(window1,bg="#FFFDD0", width = 1000, height = 1000)
+cFrame.grid(row = 0, column = 0, ipadx=10, ipady=10, padx=10, pady=10 )
+
+
+
+
+hello = tk.Label(cFrame,text="Counter", bg="#FFFDD0")
+hello.grid(row = 0, column = 1)
+
+button1 = tk.Button(cFrame,text="<====>", bg="#FFAAAA",command = lambda: [press(),action_one()])
+button1.grid(row = 1, column = 0)
+
+# ones counter
+onecount = tk.Button(cFrame,text = 0, bg="#FFAAAA")
+onecount.grid(row = 1, column = 3,)
+
+# tens counter
+tencount = tk.Button(cFrame,text = 0, bg="#FFAAAA")
+tencount.grid(row = 1, column = 2)
+
+
+tk.mainloop()
